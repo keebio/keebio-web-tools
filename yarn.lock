@@ -2120,6 +2120,28 @@
   resolved "https://registry.yarnpkg.com/@types/stack-utils/-/stack-utils-2.0.1.tgz#20f18294f797f2209b5f65c8e3b5c8e8261d127c"
   integrity sha512-Hl219/BT5fLAaz6NDkSuhzasy49dwQS/DSdu4MdggFB8zcXv7vflBI3xp7FEmkmdDkBUI2bPUNeMttp2knYdxw==
 
+"@types/styletron-engine-atomic@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@types/styletron-engine-atomic/-/styletron-engine-atomic-1.1.1.tgz#032dabd5ccea1b8601521ad38616a7a9f0af5404"
+  integrity sha512-Jthl51uLiVZHkY0HRBGtDOjjtI4H0nYaERZtzzdDgnJSa+PqQG55ScMQPmSAu6ikzYWp6+jJbbtuIX+TqVfFeg==
+  dependencies:
+    "@types/styletron-standard" "*"
+
+"@types/styletron-react@^5.0.3":
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/@types/styletron-react/-/styletron-react-5.0.3.tgz#54d6e9acefb692355b35132b9f5276cc5cac00f6"
+  integrity sha512-mNM8WrFrCYWXNxudjdMMeHZmGdXLfVF/fQmj1Qnz7E99niL2d7IcQubbx731FX3YEVGoF9Au1J6uBkPoEzqypw==
+  dependencies:
+    "@types/react" "*"
+    "@types/styletron-standard" "*"
+
+"@types/styletron-standard@*", "@types/styletron-standard@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@types/styletron-standard/-/styletron-standard-2.0.2.tgz#1e4f1977555e0b4612af0f5f420e8c777640b124"
+  integrity sha512-ZpPB8k2Yhskq/oggg2wjWeP/bBxRDfwIzRrHbdksVOQXfHOLf4rRqs2tlWLK/NRJvWU3E3MlXeNcoVSZjuAPiQ==
+  dependencies:
+    csstype "^3.0.2"
+
 "@types/testing-library__jest-dom@^5.9.1":
   version "5.14.5"
   resolved "https://registry.yarnpkg.com/@types/testing-library__jest-dom/-/testing-library__jest-dom-5.14.5.tgz#d113709c90b3c75fdb127ec338dad7d5f86c974f"
