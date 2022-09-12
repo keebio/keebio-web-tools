@@ -1,5 +1,6 @@
 import React from 'react';
-import { MantineProvider, Code, Textarea,  } from '@mantine/core';
+import { Container, Textarea, ScrollArea } from '@mantine/core';
+import { Prism } from '@mantine/prism';
 import json5 from "json5";
 import './App.css';
 
@@ -69,9 +70,10 @@ function App() {
   return (
     <div className="App">
       <React.Fragment>
+        <Container>
           <h1>VIA JSON Updater Tool</h1>
-          <h2>Paste original JSON here:</h2>
           <Textarea
+            label="Paste original JSON here:"
             value={originalJSON}
             onChange={handleJSONChange}
             placeholder="Original VIA JSON..."
@@ -80,8 +82,8 @@ function App() {
             minRows={4}
             maxRows={10}
           />
-          <h2>Paste raw KLE JSON here:</h2>
           <Textarea
+            label="Paste raw KLE JSON here:"
             value={kleUpdate}
             onChange={handleKLEChange}
             placeholder="New Raw KLE JSON..."
@@ -91,10 +93,10 @@ function App() {
             maxRows={10}
           />
           <h2>Updated VIA JSON:</h2>
-          <Textarea
-            readOnly
-            value={outputJSON} 
-          />
+          <ScrollArea style={{ height: 250 }}>
+            <Prism language="json">{outputJSON}</Prism>
+          </ScrollArea>
+        </Container>
       </React.Fragment>
     </div>
   );
