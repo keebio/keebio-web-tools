@@ -1,7 +1,5 @@
 import React from 'react';
-import { SIZE, Textarea } from "baseui/textarea";
-import { Block } from 'baseui/block'
-import { Button } from "baseui/button";
+import { MantineProvider, Code, Textarea,  } from '@mantine/core';
 import json5 from "json5";
 import './App.css';
 
@@ -71,63 +69,32 @@ function App() {
   return (
     <div className="App">
       <React.Fragment>
-        <Block width={['600px']}>
           <h1>VIA JSON Updater Tool</h1>
           <h2>Paste original JSON here:</h2>
           <Textarea
             value={originalJSON}
             onChange={handleJSONChange}
             placeholder="Original VIA JSON..."
-            size={SIZE.mini}
-            positive={isValidJSON}
             error={!isValidJSON}
-            overrides={{
-              Input: {
-                style: {
-                  height: '150px',
-                  fontFamily: ['Fira Code', 'Menlo', 'Courier New', 'Courier', 'monospace'],
-                  width: '100vw',
-                },
-              },
-            }}
+            autosize
+            minRows={4}
+            maxRows={10}
           />
           <h2>Paste raw KLE JSON here:</h2>
           <Textarea
             value={kleUpdate}
             onChange={handleKLEChange}
             placeholder="New Raw KLE JSON..."
-            size={SIZE.mini}
-            positive={isValidKLE}
             error={!isValidKLE}
-            overrides={{
-              Input: {
-                style: {
-                  height: '150px',
-                  fontFamily: ['Fira Code', 'Menlo', 'Courier New', 'Courier', 'monospace'],
-                  width: '100vw',
-                },
-              },
-            }}
+            autosize
+            minRows={4}
+            maxRows={10}
           />
           <h2>Updated VIA JSON:</h2>
-          <Button onClick={copyOutputToClipboard} disabled={outputJSON === ''}>Copy</Button>
-          <br/>
-          <br/>
           <Textarea
             readOnly
             value={outputJSON} 
-            size={SIZE.mini}
-            overrides={{
-              Input: {
-                style: {
-                  height: '250px',
-                  fontFamily: ['Fira Code', 'Menlo', 'Courier New', 'Courier', 'monospace'],
-                  width: '100vw',
-                },
-              },
-            }}
           />
-        </Block>
       </React.Fragment>
     </div>
   );
