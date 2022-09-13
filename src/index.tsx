@@ -10,7 +10,20 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <MantineProvider withGlobalStyles withNormalizeCSS>
+    <MantineProvider withGlobalStyles withNormalizeCSS
+      theme={{
+        fontFamilyMonospace: 'Fira Code, Menlo, Courier New, Courier, monospace', 
+        components: {
+          Input: {
+            styles: (theme) => ({
+              input: {
+                fontFamily: ['Fira Code'],
+                fontSize: 11
+              },
+            }),
+          },
+        },
+      }}>
       <App />
     </MantineProvider>
   </React.StrictMode>

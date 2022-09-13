@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Textarea, ScrollArea } from '@mantine/core';
+import { Container, Textarea } from '@mantine/core';
 import { Prism } from '@mantine/prism';
 import json5 from "json5";
 import './App.css';
@@ -63,10 +63,6 @@ function App() {
     }
   }
 
-  const copyOutputToClipboard = () => {
-    navigator.clipboard.writeText(outputJSON);
-  }
-
   return (
     <div className="App">
       <React.Fragment>
@@ -79,8 +75,8 @@ function App() {
             placeholder="Original VIA JSON..."
             error={!isValidJSON}
             autosize
-            minRows={4}
-            maxRows={10}
+            minRows={8}
+            maxRows={12}
           />
           <Textarea
             label="Paste raw KLE JSON here:"
@@ -89,13 +85,16 @@ function App() {
             placeholder="New Raw KLE JSON..."
             error={!isValidKLE}
             autosize
-            minRows={4}
-            maxRows={10}
+            minRows={8}
+            maxRows={12}
           />
-          <h2>Updated VIA JSON:</h2>
-          <ScrollArea style={{ height: 250 }}>
-            <Prism language="json">{outputJSON}</Prism>
-          </ScrollArea>
+          <h3>Updated VIA JSON:</h3>
+          <Prism
+            colorScheme="dark"
+            language="json"
+          >
+            {outputJSON}
+          </Prism>
         </Container>
       </React.Fragment>
     </div>
