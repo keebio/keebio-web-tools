@@ -8,6 +8,7 @@ function App() {
   const [originalJSON, setOriginalJSON] = React.useState('');
   const [kleUpdate, setKLEUpdate] = React.useState('');
   const [outputJSON, setOutputJSON] = React.useState('');
+  const [originalKLE, setOriginalKLE] = React.useState('');
   const [isValidJSON, setIsValidJSON] = React.useState(false);
   const [isValidKLE, setIsValidKLE] = React.useState(false);
 
@@ -16,6 +17,7 @@ function App() {
     setOriginalJSON(newJSON);
     console.log(newJSON);
     updateOutput(newJSON, kleUpdate);
+    updateOriginalKLE(newJSON);
   };
 
   const handleKLEChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -63,6 +65,16 @@ function App() {
     }
   }
 
+  const updateOriginalKLE = (inputJSON: string) => {
+    setOriginalKLE('');
+    const newJSON = parseInputJSON(inputJSON);
+    if (newJSON != null) {
+      var output = newJSON as any;
+      console.log('keymap: ' + output.layouts.keymap);
+      setOriginalKLE(JSON.stringify(output.layouts.keymap).replace(/^\[|]$/g, ''));
+    }
+  }
+
   return (
     <div className="App">
       <React.Fragment>
@@ -94,6 +106,13 @@ function App() {
             language="json"
           >
             {outputJSON}
+          </Prism>
+          <h3>Original KLE from VIA JSON (to paste into Raw data):</h3>
+          <Prism
+            colorScheme="dark"
+            language="json"
+          >
+            {originalKLE}
           </Prism>
         </Container>
       </React.Fragment>
