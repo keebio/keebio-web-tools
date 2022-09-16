@@ -80,8 +80,8 @@ function App() {
       <React.Fragment>
         <Container>
           <h1>VIA JSON Updater Tool</h1>
+          <h3>Paste original VIA JSON here:</h3>
           <Textarea
-            label="Paste original JSON here:"
             value={originalJSON}
             onChange={handleJSONChange}
             placeholder="Original VIA JSON..."
@@ -90,8 +90,15 @@ function App() {
             minRows={8}
             maxRows={12}
           />
+          <h3>Original KLE from VIA JSON (to paste into Raw data in KLE):</h3>
+          <Prism
+            colorScheme="dark"
+            language="json"
+          >
+            {originalKLE}
+          </Prism>
+          <h3>Paste updated Raw data from KLE here:</h3>
           <Textarea
-            label="Paste raw KLE JSON here:"
             value={kleUpdate}
             onChange={handleKLEChange}
             placeholder="New Raw KLE JSON..."
@@ -106,13 +113,6 @@ function App() {
             language="json"
           >
             {outputJSON}
-          </Prism>
-          <h3>Original KLE from VIA JSON (to paste into Raw data):</h3>
-          <Prism
-            colorScheme="dark"
-            language="json"
-          >
-            {originalKLE}
           </Prism>
         </Container>
       </React.Fragment>
