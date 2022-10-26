@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Textarea } from '@mantine/core';
 import { Prism } from '@mantine/prism';
 import json5 from "json5";
+import { Formatter, FracturedJsonOptions } from 'fracturedjsonjs';
 import './App.css';
 
 function App() {
@@ -11,6 +12,12 @@ function App() {
   const [originalKLE, setOriginalKLE] = React.useState('');
   const [isValidJSON, setIsValidJSON] = React.useState(false);
   const [isValidKLE, setIsValidKLE] = React.useState(false);
+
+  const formatterOptions = new FracturedJsonOptions();
+  formatterOptions.IndentSpaces = 2;
+  formatterOptions.MaxTableRowComplexity = 0;
+  const formatter = new Formatter();
+  formatter.Options = formatterOptions;
 
   const handleJSONChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newJSON = event.target.value
@@ -61,7 +68,7 @@ function App() {
       var output = newJSON as any;
       output.layouts.keymap = keymap;
       console.log(output);
-      setOutputJSON(JSON.stringify(output, null, 2));
+      setOutputJSON(formatter.Reformat(JSON.stringify(output, null, 2)));
     }
   }
 
